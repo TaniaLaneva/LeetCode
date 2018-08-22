@@ -1,0 +1,25 @@
+public class Solution {
+    public int MaxIncreaseKeepingSkyline(int[][] grid) {
+        int sum=0;
+        int n=grid.Length; int m=grid[0].Length;
+        int [] maxColumns = new int[n];
+        int[] maxRows=new int[m];
+        for (int i=0; i<n; i++){
+            maxColumns[i]=grid[i].Max();
+        }
+        for (int j=0; j<m; j++){
+            int max=0;
+            for (int i=0; i<n; i++){
+                if (grid[i][j]>max) max=grid[i][j];
+            }
+            maxRows[j]=max;
+        }
+        for (int i=0; i<n; i++){
+            for (int j=0; j<m; j++){
+                if (grid[i][j]<Math.Min(maxColumns[i], maxRows[j])) sum+=Math.Min(maxColumns[i], maxRows[j])-grid[i][j];
+            }
+        }
+
+        return sum;
+    }
+}
