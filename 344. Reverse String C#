@@ -1,0 +1,11 @@
+public class Solution {
+    public string ReverseString(string s) {
+        char[]st=s.ToArray();
+        for(int i=0, j=st.Length-1; i<=j; i++, j-- ){
+            char temp=s[i];
+            st[i]=st[j];
+            st[j]=temp;
+        }
+        return new string(st);
+    }
+}
