@@ -1,0 +1,11 @@
+public class Solution {
+    public int TitleToNumber(string s) {
+        int answer=0, length;
+        length=s.Length-1;
+        for (int i=length, k=0; i>=0; i--,k++){
+            answer+=((int)s[i]-64)*(int)Math.Pow(26,k);
+           
+        }
+        return answer;
+    }
+}
