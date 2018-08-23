@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        
+        List<List<Integer>> myList= new ArrayList<List<Integer>>();
+        if (numRows==0) return myList;
+        myList.add(new ArrayList<Integer>(){{add(1);}});
+        if (numRows==1) return myList;
+        myList.add(new ArrayList<Integer>(){{add(1);add(1);}});
+        if (numRows==2) return myList;
+        int prev=1;
+        while(numRows!=2){
+            List<Integer> addMe=new ArrayList<Integer>();
+            addMe.add(1);
+            for (int i=0; i<myList.get(prev).size()-1; i++){
+                addMe.add(myList.get(prev).get(i)+myList.get(prev).get(i+1));
+            }
+            addMe.add(1);
+            myList.add(addMe);
+            prev++;
+            numRows--;
+        }
+        
+        
+        return myList;
+    }
+}
