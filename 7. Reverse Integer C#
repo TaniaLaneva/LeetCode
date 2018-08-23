@@ -1,0 +1,24 @@
+public class Solution {
+    public int Reverse(int x) {
+      string ans="";
+        if(x>=0) {
+            ans=x.ToString();
+            char[]myArray=ans.ToArray();
+            Array.Reverse(myArray);
+            ans=new string(myArray);
+        }
+        else{
+            try{
+            ans=((int)Math.Abs(x)).ToString();
+            char[]myArray=ans.ToArray();
+            Array.Reverse(myArray);
+            ans="-"+ new string(myArray);}
+            catch {return 0;}
+        }
+        int a=0;
+        
+        try{a=Convert.ToInt32(ans);}
+        catch {a=0;}
+        return a;
+    }
+}
