@@ -1,0 +1,21 @@
+public class Solution {
+    public bool IsHappy(int n) {
+        HashSet<int> mySet=new HashSet<int>();
+        while(n!=1){
+            if (mySet.Contains(n)) return false;
+            mySet.Add(n);
+            n=Convert(n);
+        }
+        return true;
+        
+    }
+    public static int Convert(int n){
+        int sum=0;
+        while(n>=1){
+            sum+=(int)Math.Pow(n%10,2);
+            n/=10;
+        }
+        return sum;
+    
+    }
+}
