@@ -1,0 +1,10 @@
+public class Solution {
+    public int[] Intersection(int[] nums1, int[] nums2) {
+        int[] myArray=new int[5];
+        HashSet<int> set1=new HashSet<int>();
+        foreach (int el in nums1) set1.Add(el);
+        HashSet<int> set2=new HashSet<int>();
+        foreach (int el in nums2) set2.Add(el);
+        return set1.Intersect(set2).ToArray();
+    }
+}
