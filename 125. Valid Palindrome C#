@@ -1,0 +1,15 @@
+public class Solution {
+    public bool IsPalindrome(string s) {
+        s=s.ToUpper();
+        HashSet<char> mySet=new HashSet<char>();
+        for (int i=48; i<58; i++) mySet.Add((char)i);
+        for (int i=65; i<91; i++) mySet.Add((char)i);
+        int n=s.Length-1;
+        for(int i=0, j=n; i<=j; i++, j--){
+            while (!mySet.Contains(s[i]) && i<j) i++;
+            while (!mySet.Contains(s[j]) && i<j) j--;
+            if (s[i]!=s[j]) return false;
+        }
+        return true;
+    }
+}
