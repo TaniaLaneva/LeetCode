@@ -1,0 +1,18 @@
+public class Solution {
+    public int CountPrimes(int n) {
+            if (n<=2) return 0;
+            HashSet<int> mySet=new HashSet<int>();
+            mySet.Add(2);
+            for (int i=3; i<n; i+=2){
+                mySet.Add(i);
+            }
+            mySet.RemoveWhere(IsNotPrime);   
+            return mySet.Count();
+    }
+    private bool IsNotPrime(int n){
+        for (int i=3; i*i<=n; i+=2 ){
+            if (n%i==0) return true;
+        }
+        return false;
+    }
+}
