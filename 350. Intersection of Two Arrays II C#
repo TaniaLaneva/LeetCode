@@ -1,0 +1,19 @@
+public class Solution {
+    public int[] Intersect(int[] nums1, int[] nums2) {
+        List<int> myList=new List<int>();
+        Dictionary<int, int> myDict= new Dictionary<int,int>();
+        foreach (int el in nums1){
+            try {myDict.Add(el, 1);}
+            catch {myDict[el]++;}
+        }
+    
+        foreach (int el in nums2){
+            if (myDict.ContainsKey(el)&&myDict[el]>0){
+                myDict[el]--;
+                myList.Add(el);
+            }
+        }
+        
+        return myList.ToArray();
+    }
+}
