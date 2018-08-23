@@ -1,0 +1,13 @@
+public class Solution {
+    public string ConvertToTitle(int n) {
+        string answer="";        
+        do{
+            if (n%26!=0) answer=answer.Insert(0,((char)(n%26+64)).ToString());
+            else {
+                answer=answer.Insert(0, ((char)90).ToString());
+                n-=26; }
+            n=n/26;
+        } while(n!=0);
+        return answer; 
+    }
+}
