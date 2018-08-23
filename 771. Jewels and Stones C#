@@ -1,0 +1,11 @@
+public class Solution {
+    public int NumJewelsInStones(string J, string S) {
+        Dictionary<char, int> myDict=new Dictionary<char,int>();
+        foreach (char el in J) myDict.Add(el, 0);
+        foreach (char el in S){
+            if (myDict.ContainsKey(el)) myDict[el]++;
+        }
+        
+        return myDict.Values.Sum();
+    }
+}
