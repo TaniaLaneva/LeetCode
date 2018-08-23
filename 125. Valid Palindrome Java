@@ -1,0 +1,15 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.toUpperCase();        
+        HashSet<Character> mySet=new HashSet<Character>();
+        for (int i=48; i<58; i++) mySet.add((char)i);
+        for (int i=65; i<91; i++) mySet.add((char)i);
+        int n=s.length()-1;
+        for(int i=0, j=n; i<=j; i++, j--){
+            while (!mySet.contains(s.charAt(i)) && i<j) i++;
+            while (!mySet.contains(s.charAt(j)) && i<j) j--;
+            if (s.charAt(i)!=s.charAt(j)) return false;
+        }
+        return true;
+    }
+}
