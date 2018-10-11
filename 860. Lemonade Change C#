@@ -1,0 +1,18 @@
+public class Solution {
+    public bool LemonadeChange(int[] bills) {
+        Dictionary<int, int> vallet=new Dictionary<int, int>{{5,0},{10,0}};
+        foreach (int el in bills){
+            if (el==5) vallet[5]++;
+            if (el==10) {
+                if (vallet[5]>0) {vallet[5]--; vallet[10]++;}
+                else return false;
+            }
+            if (el==20){
+                if (vallet[5]>0 && vallet[10]>0) {vallet[10]--; vallet[5]--; continue;}
+                else if (vallet[5]>2) {vallet[5]-=3;}
+                else return false;
+            }
+        }
+        return true;
+    }
+}
