@@ -1,0 +1,12 @@
+public class Solution {
+    public void Rotate(int[] nums, int k) {
+        int length=nums.Length;
+        if (k%length==0 || k==0 || length<=1) return;
+        if (k>length) k=k%length;
+        int[] nums2=new int[length];
+        for (int i=0; i<length-k; i++) nums2[i+k]=nums[i];;
+        for (int i=length-k; i<length; i++) nums2[i-length+k]=nums[i];
+        
+        nums2.CopyTo(nums,0);
+    }
+}
