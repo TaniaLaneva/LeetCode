@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack <Character> myStack = new Stack<Character>();
+        
+        for (int i=0; i<s.length(); i++){
+            try{
+                if ((int)s.charAt(i)- (int)myStack.peek()==1||(int)s.charAt(i)-(int)myStack.peek()==2) myStack.pop();
+                else myStack.push(s.charAt(i));
+            }
+            catch (Exception e ) {
+                myStack.push(s.charAt(i));
+            }                        
+        }
+        if (myStack.size()==0) return true;
+        return false;
+    }
+}
