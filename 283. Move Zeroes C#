@@ -1,0 +1,15 @@
+public class Solution {
+    public void MoveZeroes(int[] nums) {
+        int length=nums.Length;
+        for (int i=0; i<length; i++){
+            while (nums[i]==0 && i<length) {
+                length--;
+                for (int j=i; j<length; j++){
+                    nums[j]=nums[j+1];
+                }
+                nums[length]=0;
+            }
+            
+        }
+    }
+}
