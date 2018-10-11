@@ -1,0 +1,23 @@
+public class Solution {
+    public int RomanToInt(string s) {
+       int sum=0;
+        Dictionary<char, int> myDict=new Dictionary<char, int>{
+            ['I'] = 1,
+            ['V'] = 5,
+            ['X'] = 10,
+            ['L'] = 50,
+            ['C'] = 100,
+            ['D']  = 500,
+            ['M']  = 1000
+        };
+        int prev=myDict[s[0]];
+        sum+=prev;
+        for (int i=1; i<s.Length; i++){
+            int next=myDict[s[i]];
+            if (prev<next)sum+=next-2*prev;
+            else sum+=next;
+            prev=next;
+        }
+        return sum; 
+    }
+}
