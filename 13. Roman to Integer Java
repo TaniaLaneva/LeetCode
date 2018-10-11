@@ -1,0 +1,22 @@
+class Solution {
+    public int romanToInt(String s) {
+        int sum=0;
+        Map<Character, Integer> myMap = new HashMap<>();
+        myMap.put('I', 1);
+        myMap.put('V', 5);
+        myMap.put('X', 10);
+        myMap.put('L', 50);
+        myMap.put('C', 100);
+        myMap.put('D', 500);
+        myMap.put('M', 1000);
+        int prev=myMap.get(s.charAt(0));
+        sum+=prev;
+        for (int i=1; i<s.length(); i++){
+            int next=myMap.get(s.charAt(i));
+            if (prev<next)sum+=next-2*prev;
+            else sum+=next;
+            prev=next;
+        }
+        return sum;
+    }
+}
