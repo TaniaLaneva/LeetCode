@@ -1,0 +1,36 @@
+public class Solution {
+    public string IntToRoman(int num) {
+        string sum="";
+        int n=num/1000;
+        if (n>0){            
+            sum+=string.Concat(Enumerable.Repeat("M", n));
+            num-=n*1000;
+        }
+        n=num/100;
+        if (n>0){
+            if (n<4) sum+=string.Concat(Enumerable.Repeat("C", n));
+            if (n==4) sum+="CD";
+            if (n==5) sum+="D";
+            if (n==9) sum+="CM";
+            if (n>5 && n<9) sum+="D"+string.Concat(Enumerable.Repeat("C", (n-5)));
+            num-=n*100;
+        }
+        n=num/10;
+        if (n>0){
+            if (n<4) sum+=string.Concat(Enumerable.Repeat("X", n));
+            if (n==4) sum+="XL";
+            if (n==5) sum+="L";
+            if (n==9) sum+="XC";
+            if (n>5 && n<9) sum+="L"+string.Concat(Enumerable.Repeat("X", (n-5)));
+            num-=n*10;
+        }
+        if (num>0){
+            if (num<4) sum+=string.Concat(Enumerable.Repeat("I", num));
+            if (num==4) sum+="IV";
+            if (num==5) sum+="V";
+            if (num==9) sum+="IX";
+            if (num>5 && num<9) sum+="V"+string.Concat(Enumerable.Repeat("I", (num-5)));
+        }
+        return sum;
+    }
+}
