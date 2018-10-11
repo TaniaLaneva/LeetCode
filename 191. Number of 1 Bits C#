@@ -1,0 +1,9 @@
+public class Solution {
+    public int HammingWeight(uint n) {
+        string converted = Convert.ToString(n, 2);
+        int answer=0;
+        foreach (char el in converted) if (el=='1') answer++;
+        
+        return answer; 
+    }
+}
