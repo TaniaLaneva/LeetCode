@@ -1,0 +1,28 @@
+public class Solution {
+    public bool BuddyStrings(string A, string B) {
+        int lengthA=A.Length;
+        int lengthB=B.Length;
+        if (lengthA!=lengthB) return false;
+        char a='\0', b='\0';
+        if (A==B){
+           HashSet<char> mySet=new HashSet<char>();
+            for (int i=0; i<lengthA; i++){
+                if (!mySet.Contains(A[i])) mySet.Add(A[i]);
+                else return true;
+            }
+            return false;
+        }
+        bool flag=false, f2=false;
+        for (int i=0; i<lengthA; i++){
+            if (A[i]!=B[i]){
+                if (a=='\0'&& i!=lengthA-1) {a=A[i]; b=B[i]; f2=true;}
+                else {
+                    if (a==B[i] && b==A[i] && flag==false) {flag=true; f2=false;}
+                    else return false;
+                }
+            }
+        }
+        if (f2==true) return false;
+        else return true;
+    }
+}
