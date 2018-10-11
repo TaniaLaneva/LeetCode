@@ -1,0 +1,22 @@
+public class Solution {
+    public string CountAndSay(int n) {
+        string one="1", two="";
+        int count;
+        n--;
+        while(n>0){
+            
+            count=1;
+            for (int i=0; i<one.Length-1; i++){
+                if (one[i]==one[i+1]) count++;
+                else {
+                    two+=count.ToString()+ one[i];
+                    count=1;
+                }
+            }
+            two+=count.ToString()+one.Last();
+            one=two; two=""; n--;
+            //Console.WriteLine(one);
+        }
+        return one;
+    }
+}
