@@ -1,0 +1,21 @@
+class Solution {
+    public String countAndSay(int n) {
+        String one="1", two="";
+        int count;
+        n--;
+        while(n>0){
+            int length=one.length()-1;
+            count=1;
+            for (int i=0; i<length; i++){
+                if (one.charAt(i)==one.charAt(i+1)) count++;
+                else {
+                    two+=count+""+ one.charAt(i);
+                    count=1;
+                }
+            }
+            two+=count+""+one.charAt(length);
+            one=two; two=""; n--;
+        }
+        return one;
+    }
+}
