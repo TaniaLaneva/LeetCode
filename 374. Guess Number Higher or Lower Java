@@ -1,0 +1,18 @@
+/* The guess API is defined in the parent class GuessGame.
+   @param num, your guess
+   @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+      int guess(int num); */
+
+public class Solution extends GuessGame {
+    public int guessNumber(int n) {
+        int guess;
+        long begin=1, end=n, middle=(begin+end)/2;
+        while (end>=begin){
+            guess=guess((int)middle);
+            if (guess==0) return (int)middle;
+            if (guess==-1) {end=middle-1; middle=(begin+end)/2;}
+            if (guess==1) {begin=middle+1; middle=(begin+end)/2;}
+        }
+        return (int)middle;
+    }
+}
