@@ -1,0 +1,24 @@
+class Solution {
+    public int climbStairs(int n) {
+       if (n==0) return 0;
+        if (n==1) return 1;
+        int answer=1;
+        int count2=n/2, amount=n%2+count2;
+        long sum=(amount==count2)?1:Factorial(amount, count2);
+        answer+=(int)sum;
+        while(count2>1){
+            amount++;
+            sum=(sum*amount*count2)/((amount-count2)*(amount-count2+1));
+            answer+=(int)sum; count2--;
+            
+        }
+        return answer;
+    }
+    public static long Factorial(int amount, int count2){
+        long answer=1;
+        while(amount>count2) {
+            answer*=amount; amount--;
+        }
+        return answer; 
+    }
+}
