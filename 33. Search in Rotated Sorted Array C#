@@ -1,0 +1,25 @@
+public class Solution {
+    public int Search(int[] nums, int target) {
+        int k=1, length=nums.Length;
+        if (length==0) return -1;
+        
+        int[]nums2=new int[length];
+        for (int i=0; i<length-1; i++){
+            if (nums[i]>nums[i+1]) break;
+            else k++;
+        }
+        int j=0;
+        for (int i=k; i<length; i++, j++) nums2[j]=nums[i];
+        j=length-k;
+        for(int i=0; j<length; i++, j++) nums2[j]=nums[i];
+        
+        int begin=0, end=length-1, middle=(begin+end)/2;
+        while(begin<=end){
+            if (nums2[middle]==target) return (middle+k)%length;
+            if (nums2[middle]<target) {begin=middle+1; middle=(begin+end)/2;}
+            if (nums2[middle]>target){end=middle-1; middle=(begin+end)/2;}
+        }
+        
+        return -1;
+    }
+}
