@@ -26,6 +26,7 @@ public class Solution {
                 valAndrem=valAndrem2;
             }
             else if (l1!=null && l2!=null){
+            
                 var valAndrem2=FindValue(l1.val, l2.val, valAndrem.remainder);
                 l3.next=new ListNode(valAndrem2.valu);
                 l3=l3.next; l1=l1.next; l2=l2.next;
