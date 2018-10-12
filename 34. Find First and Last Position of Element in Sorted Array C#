@@ -1,0 +1,35 @@
+public class Solution {
+    public int[] SearchRange(int[] nums, int target) {
+        if (nums==null) return new int[]{-1,-1};
+       int length=nums.Length;
+        if (length==0) return new int[]{-1, -1};
+        
+        int begin=0, end=length-1;
+        while (begin+1<end){
+            int mid=begin+(end-begin)/2;
+            if (nums[mid]>target) end=mid;
+            else if (nums[mid]<target) begin=mid;
+            else {
+                
+                int mid1=mid, mid2=mid;
+                while(mid1+1 < end) {
+                    int m=mid1+(end-mid1)/2;
+                    if (nums[m]==target) mid1=m;
+                    else end=m;
+                }
+                while (mid2-1 >begin){
+                    int m=begin+(mid2-begin)/2;
+                    if (nums[m]==target) mid2=m;
+                    else begin=m;
+                }
+                if (nums[begin]==target) mid2=begin;
+                if (nums[end]==target) mid1=end;
+                return new int[]{mid2, mid1};
+            }
+        }
+        if (nums[begin]==target && nums[end]==target) return new int[]{begin, end};
+        if (nums[end]==target) return new int[]{end,end};
+        if (nums[begin]==target) return new int[]{begin, begin};
+        return new int[]{-1, -1}; 
+    }
+}
