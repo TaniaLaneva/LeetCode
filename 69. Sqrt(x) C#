@@ -1,0 +1,12 @@
+public class Solution {
+    public int MySqrt(int x) {
+        int begin=1, end=x, middle=(begin+end)/2, result=0;
+        while(end>=begin){            
+            if (middle==x/middle) return middle;
+            if (middle>x/middle) {end=middle-1; middle=(begin+end)/2;}
+            if (middle<x/middle) {begin=middle+1;  result=middle; middle=(begin+end)/2; }
+            
+        }
+        return result;
+    }
+}
